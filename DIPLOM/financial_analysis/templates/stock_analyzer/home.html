@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ финансовых данных</title>
+</head>
+<body>
+    <h1>Анализ цен акций</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="ticker">Тикер:</label>
+        <input type="text" id="ticker" name="ticker"><br><br>
+        <select name="period" id="period">
+            <option value="1d">1 день</option>
+            <option value="5d">5 дней</option>
+            <option value="1mo">1 месяц</option>
+            <option value="3mo">3 месяца</option>
+            <option value="6mo">6 месяцев</option>
+            <option value="1y">1 год</option>
+            <option value="2y">2 года</option>
+            <option value="5y">5 лет</option>
+            <option value="10y">10 лет</option>
+            <option value="max">Максимум</option>
+        </select><br><br>
+        <button type="submit">Загрузить данные</button>
+    </form>
+    {% if plot %}
+        <img src="{{ plot }}" alt="График цен акций">
+    {% endif %}
+</body>
+</html>
